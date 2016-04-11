@@ -8,3 +8,6 @@ because it will expire in few hours.
 
 The final_project file currently contains tf-idf implementation under 
 src/main/scala/neu/edu/scala directory.
+
+The Final_Project_0329_countMultiLayer folder contains graph generation and function of calculating amount of common likes of two people.
+3rd-party package neo4j for SCALA is required.
