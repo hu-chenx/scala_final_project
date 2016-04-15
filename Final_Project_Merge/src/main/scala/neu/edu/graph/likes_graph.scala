@@ -189,18 +189,22 @@ def createGraph(id:String, name:String, fbClient: DefaultFacebookClient): Unit =
 
   val node = withTx {
     implicit neo => 
-      val query = "MATCH(node { id: '"+id+"' }) RETURN node"
-      val typedResult = query.execute
-      if(!typedResult.hasNext) {
-        println("No Node Found")
-        val newNode = createNode(GraphNode(name,id,"topic"),id)
-        newNode
-      }else{
-        val result = if(typedResult.hasNext){
-          val node = typedResult.next().asInstanceOf[Node]
-          node
-        }
-       result.asInstanceOf[Node]
+      if(id == "me") {
+        val meNode = createNode(GraphNode(name,id,"topic"),id)
+        meNode
+        }else{
+          val query = "MATCH(node { id: '"+id+"' }) RETURN node"
+          val typedResult = query.execute
+          if(!typedResult.hasNext) {
+            println("No Node Found")
+            val newNode = createNode(GraphNode(name,id,"topic"),id)
+            newNode
+          }else{
+            val result = if(typedResult.hasNext){
+              val node = typedResult.next().asInstanceOf[Node]
+              node
+            }
+           result.asInstanceOf[Node]}
       }
   }
   

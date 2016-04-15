@@ -39,7 +39,7 @@ object main {
   def main(args: Array[String]): Unit = {
       
     // login & authentication  
-    val accessToken = "CAACEdEose0cBAGKcvwKXWzSxSK7DyVwMj99mtgtCwwrbJvTF7Dt7ZCekz5njpUnZAtz8wIhCjOptp9N0eHgJAylUDLpjBEHRo5ACkw7Nh3pLPqLS2ZCt6LdrPqGWwckIj6PZCVvrcZC2ABWNLipUHJ87T6pCDnW1ejtIyxG3ZCXyUtZCnKy14xiJqdgLNI0QCahh8qTeN0th8ZCt5CS3YpR1"   
+    val accessToken = "EAACEdEose0cBABvKrpxZAvagTSvY8aKE7SMAJubxfZBqKVm1939XmBZAvoZAdS15sBHQkGOGlgkBvWIKWj7ZAQ8oDxqGW7po5ZBb1I7ystPhE3CaRE5r9ON1ECHyJJyCrNqzZA7ZAE5gZAodtd7mVIlvQ3Q911ZBfhy2oKQWX8iI7YrwZDZD"   
      
     val fbClient = new DefaultFacebookClient(accessToken)
    
@@ -47,11 +47,11 @@ object main {
     // loading file if folder is empty
     val filePath = "/Users/yangnan/workspace/Final_Project/post_output"
     val fileData = new File(filePath);   
-    if(!(fileData.isDirectory() && fileData.list().length > 0)) loadingData(fbClient)
+    if(!(fileData.isDirectory() && fileData.list().length > 1)) loadingData(fbClient) // in case of .DSstore file
     
     
     // analyse & get similary rank
-    val id = "161161223304"
+    val id = "me"
     val topArray = TFIDF.getTfidf(fbClient,filePath,id)
     
     topArray.foreach(println)
@@ -65,21 +65,25 @@ object main {
     
     //get similarity count from graph
     val idCountArray = idArray.map { x => likes_graph.getSimCount(id,x)+1 }
-
+    idCountArray.foreach(println)
     // get final similariy rank by combining two factors together
     val toplist = scala.collection.mutable.MutableList[(Double,String)]()
     val sublist = scala.collection.mutable.MutableList[(Any,String)]()
     for ( i <- 0 to (idCountArray.length - 1)) {
-         if(topArray(i)._1.isInstanceOf[Double]) {
-           val tuple = (topArray(i)._1.asInstanceOf[Double]*idCountArray(i),topArray(i)._2)
+         if(parseDouble(topArray(i)._1) != None) {
+           val score = parseDouble(topArray(i)._1).get
+           val weightedScore = score.doubleValue() * idCountArray(i)
+           println(weightedScore)
+           val tuple = (weightedScore,topArray(i)._2)
            toplist += tuple
          }else{
            sublist += topArray(i)
          }
       }
     toplist.toList.sortWith(_._1 > _._1)
-    
-    toplist.foreach(print)
+
+    toplist.foreach(println)
+    sublist.foreach(println)
     
   }
   
@@ -104,5 +108,7 @@ object main {
       
        like_list.foreach { x =>  m_actor ! x  }
   }
+  
+  def parseDouble(s: String) = try { Some(s.toDouble) } catch { case _ => None }
 
 }
