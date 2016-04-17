@@ -1,13 +1,5 @@
 # scala_final_project
-
-The test3 file is our current eclipse project, the test_2_fb file in 
-directory src/main/scala/neu/edu/scala is used to retrive data from 
-facebook,and the reason why it is called test is it just represent
-our current process, and test_fb file is used to extends the accesstoken,
-because it will expire in few hours.
-
-The final_project file currently contains tf-idf implementation under 
-src/main/scala/neu/edu/scala directory.
+Final Project Merge folder combined the graph analysis code, data fetching and tf-idf implementation, and also the scalatest implementaion under the src/test/main source folder.
 
 The Final_Project_0329_countMultiLayer folder contains graph generation and function of calculating amount of common likes of two people.
 3rd-party package neo4j for SCALA is required.
