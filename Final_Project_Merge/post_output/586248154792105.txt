@@ -1,1 +1,0 @@
-List(Thanks Boston Magazine!, null, null, null, null, null)
