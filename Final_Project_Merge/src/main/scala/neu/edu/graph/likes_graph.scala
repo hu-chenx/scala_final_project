@@ -141,7 +141,7 @@ def print_graph(startNode:Node): Integer = {
 
 def findSimilarity(originalId:String, targetId:String, simSet:Array[String]) : Int = {
   if(simSet.contains(targetId)) return 0
-  simSet ++ targetId
+ val sim = simSet :+ targetId
      
   
   val countVar = Array[Int]()
@@ -167,7 +167,7 @@ def findSimilarity(originalId:String, targetId:String, simSet:Array[String]) : I
       val likes = result.get("like").iterator
       if(countVar.length == 0 ) {
         val sim = result.get("similarity").get.toString();
-        countVar :+ Integer.valueOf(sim).toInt
+      val a =  countVar :+ Integer.valueOf(sim).toInt
         println("Similarity Count: " + sim)
       }
       val count = {
@@ -176,11 +176,11 @@ def findSimilarity(originalId:String, targetId:String, simSet:Array[String]) : I
         val newTargetId = node.getProperty("id").toString()
         val simcount = {
           if(originalId == newTargetId) {0}
-          else {findSimilarity(originalId,newTargetId,simSet)}
+          else {findSimilarity(originalId,newTargetId,sim)}
         }
         simcount
       }
-      countVar :+ count
+   val b =  countVar :+ count
       println(countVar)
     }
     println("test")
@@ -232,12 +232,12 @@ def getSimCount(originalId:String, targetId:String) : Int = {
   
  val simSet = Array[String]()
   
- simSet++""
+ val sim = simSet:+""
  
  
-  simSet ++ originalId
+ val sim1 = simSet :+ originalId
   
-  val count = findSimilarity(originalId,targetId,simSet)
+  val count = findSimilarity(originalId,targetId,sim1)
   
   println("findSimilarity "+ count)
   
