@@ -39,7 +39,7 @@ object likes_graph extends App with Neo4jWrapper with SingletonEmbeddedGraphData
   //val simSet = Set("null")
   
 def fetch_likes(id:String, fbClient: DefaultFacebookClient, count:Integer):Boolean = {
-  if(count == 0) return true
+  if(count == 0)  true
   val result_1 = fbClient.fetchConnection("me/likes", classOf[Page])
   val me_list_page = result_1.toIterator.toList  
   val like_list = for{
@@ -54,11 +54,12 @@ def fetch_likes(id:String, fbClient: DefaultFacebookClient, count:Integer):Boole
       } 
     } 
  
-    return true
+    
+    true
 }
 
 def fetch_likes_graph(user:Node, fbClient: DefaultFacebookClient, count:Integer):Node = {
-  if(count == 0) return user
+  if(count == 0)  user
   println("*************Layer "+count+"****************")
   def result = {
     if(user == null) fbClient.fetchConnection("me/likes", classOf[Page])
@@ -117,7 +118,7 @@ def fetch_likes_graph(user:Node, fbClient: DefaultFacebookClient, count:Integer)
     } 
      println("*************End****************")
      println()
-    return startNode
+     startNode
 }
 
 def print_graph(startNode:Node): Integer = {
@@ -140,7 +141,7 @@ def print_graph(startNode:Node): Integer = {
 }
 
 def findSimilarity(originalId:String, targetId:String, simSet:Array[String]) : Int = {
-  if(simSet.contains(targetId)) return 0
+  if(simSet.contains(targetId))  0
  val sim = simSet :+ targetId
      
   
@@ -158,7 +159,7 @@ def findSimilarity(originalId:String, targetId:String, simSet:Array[String]) : I
       
      // simSet.toArray
       
-      return 0
+       0
     }
     typedResult.toIterator
     
@@ -189,7 +190,7 @@ def findSimilarity(originalId:String, targetId:String, simSet:Array[String]) : I
     val sum = array.reduce(_+_)
     println("test3")
     println(sum)
-    return sum
+    sum
   }
 //   countVar = countTx
 //   countVar
