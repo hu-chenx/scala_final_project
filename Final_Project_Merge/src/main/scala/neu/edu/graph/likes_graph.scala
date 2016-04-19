@@ -87,7 +87,7 @@ def fetch_likes_graph(user:Node, fbClient: DefaultFacebookClient, count:Integer)
 
   val nodeMap = withTx {
     implicit neo => 
-      val nodelist = scala.collection.mutable.MutableList[Node]()
+      val nodelist = List[Node]()
       for(n <- like_list){
       val node = {
 
@@ -95,11 +95,11 @@ def fetch_likes_graph(user:Node, fbClient: DefaultFacebookClient, count:Integer)
           if(result.hasNext){
             println(n.getName + n.getId)
             val existNode = result.next()
-            nodelist += existNode
+            nodelist :+ existNode
             existNode
         }else{
           val newNode = createNode(GraphNode(n.getName,n.getId,"topic"),n.getId)
-          nodelist += newNode
+          nodelist :+ newNode
           newNode
         }
       }
@@ -139,12 +139,12 @@ def print_graph(startNode:Node): Integer = {
   
 }
 
-def findSimilarity(originalId:String, targetId:String, simSet:scala.collection.mutable.ArrayBuffer[String]) : Int = {
+def findSimilarity(originalId:String, targetId:String, simSet:Array[String]) : Int = {
   if(simSet.contains(targetId)) return 0
-  simSet += targetId
+  simSet ++ targetId
      
   
-  val countVar = scala.collection.mutable.ArrayBuffer.empty[Int]
+  val countVar = Array[Int]()
   val countSum = withTx {
         implicit neo => 
              
@@ -167,7 +167,7 @@ def findSimilarity(originalId:String, targetId:String, simSet:scala.collection.m
       val likes = result.get("like").iterator
       if(countVar.length == 0 ) {
         val sim = result.get("similarity").get.toString();
-        countVar += Integer.valueOf(sim).toInt
+        countVar :+ Integer.valueOf(sim).toInt
         println("Similarity Count: " + sim)
       }
       val count = {
@@ -180,7 +180,7 @@ def findSimilarity(originalId:String, targetId:String, simSet:scala.collection.m
         }
         simcount
       }
-      countVar += count
+      countVar :+ count
       println(countVar)
     }
     println("test")
@@ -230,9 +230,9 @@ def createGraph(id:String, name:String, fbClient: DefaultFacebookClient): Unit =
 
 def getSimCount(originalId:String, targetId:String) : Int = {
   
- val simSet = scala.collection.mutable.ArrayBuffer[String]()
+ val simSet = Array[String]()
   
- simSet+=""
+ simSet++""
  
  
   simSet ++ originalId
