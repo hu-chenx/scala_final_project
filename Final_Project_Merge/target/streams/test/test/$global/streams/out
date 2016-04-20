@@ -1,9 +1,0 @@
-[0m[[0mdebug[0m] [0mRunning TaskDef(neu.edu.nlp.TFIDFSpec, org.scalatest.tools.Framework$$anon$1@ce8d05, false, [SuiteSelector])[0m
-[0m[[0minfo[0m] [0m[36mRun completed in 20 seconds, 842 milliseconds.[0m[0m
-[0m[[0minfo[0m] [0m[36mTotal number of tests run: 10[0m[0m
-[0m[[0minfo[0m] [0m[36mSuites: completed 1, aborted 0[0m[0m
-[0m[[0minfo[0m] [0m[36mTests: succeeded 6, failed 4, canceled 0, ignored 0, pending 0[0m[0m
-[0m[[0minfo[0m] [0m[31m*** 4 TESTS FAILED ***[0m[0m
-[0m[[31merror[0m] [0mFailed tests:[0m
-[0m[[31merror[0m] [0m	neu.edu.nlp.TFIDFSpec[0m
-[0m[[31merror[0m] [0m(test:[31mtest[0m) sbt.TestsFailedException: Tests unsuccessful[0m
