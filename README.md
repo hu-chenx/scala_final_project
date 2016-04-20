@@ -5,5 +5,4 @@ fb_output is zipped file of our current data set.
 
 graph_output is the visualization of our graph generation. 
 
-The Final_Project_0329_countMultiLayer folder contains graph generation and function of calculating amount of common likes of two people.
-3rd-party package neo4j for SCALA is required.
+Final_FB_recommend_UI is our
