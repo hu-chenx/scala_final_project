@@ -1,0 +1,53 @@
+@(message:String)
+
+@main(message){
+
+ <div class="row">
+			<div class="panel panel-success">
+
+        
+        <div class="col-md-4">
+            </br>
+            <form action="@routes.Application.start()" method="post">
+                
+                <button type="submit" class="btn btn-default">  Load </button>
+            </form>
+            </br>
+            <form action="@routes.Application.graph()" method="post">
+                
+                <button type="submit" class="btn btn-default">Graph</button>
+            </form>
+       </div>
+   
+        <div class="col-md-4">
+        </br>
+            <form action="@routes.Application.tfidf()" method="post">
+            
+             <div class="form-group">
+                    <input type="text" class="form-control" placeholder="User_id" name="id">
+                </div>
+                
+                <button type="submit" class="btn btn-default">tdidf analysis</button>
+            </form>
+       </div>
+       
+  
+       
+       <div class="col-md-4">
+       </br>
+            <form action="@routes.Application.kw_User()" method="post">
+            
+             <div class="form-group">
+                    <input type="text" class="form-control" placeholder="key word" name="kw">
+                </div>
+                
+                <button type="submit" class="btn btn-default">keyword search</button>
+            </form>
+       </div>
+       
+       
+</div>
+    </div>
+
+
+}

@@ -1,0 +1,34 @@
+New log file opened at Tue Apr 19 15:17:55 PDT 2016 by 52379@ubuntu
+Taking next connection to: 57854
+New client attempting to connect on port: 50995-57854
+  Address = /127.0.1.1:57854
+This client on port 50995 has uuid 29c153bd-22ed-4c79-9083-a4577a3f0a88 configName activator humanReadableName Activator protocolVersion 3 featureTags Vector()
+Connected Clients: activator-29c153bd-22ed-4c79-9083-a4577a3f0a88
+Taking next connection to: 57854
+New client attempting to connect on port: 50996-57854
+  Address = /127.0.1.1:57854
+Handshake exception on socket: 50996
+sbt.impl.ipc.HandshakeException: Unable to perform handshake
+	at sbt.impl.ipc.Peer.handshake(IPC.scala:46)
+	at sbt.impl.ipc.MultiClientServer.<init>(IPC.scala:150)
+	at sbt.server.SbtServerSocketHandler$$anon$1.run(SbtServerSocketHandler.scala:43)
+Caused by: java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at sbt.impl.ipc.Peer.receive(IPC.scala:95)
+	at sbt.impl.ipc.Peer.handshake(IPC.scala:49)
+	... 2 more
+Taking next connection to: 57854
+New client attempting to connect on port: 50997-57854
+  Address = /127.0.1.1:57854
+This client on port 50997 has uuid 82a7a696-8070-4618-bc77-60b1544b0b26 configName play-fork-run humanReadableName Play Fork Run protocolVersion 1 featureTags Vector()
+Connected Clients: activator-29c153bd-22ed-4c79-9083-a4577a3f0a88, play-fork-run-82a7a696-8070-4618-bc77-60b1544b0b26
+Taking next connection to: 57854
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 57854
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 57854
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 57854

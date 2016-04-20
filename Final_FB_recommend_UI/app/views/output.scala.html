@@ -1,0 +1,49 @@
+
+@(tups: List[(String, String)])
+
+@main("Asscociative User"){
+
+<!-- Latest compiled and minified CSS -->
+
+
+<div class="row">
+<div class="panel panel-success">
+    <div class="col-md-4"></div>
+
+   <div class="col-md-4">
+        
+          
+    
+            <div class="pull-center" >
+            
+                @for(tup<-tups){
+                <div class="span4">
+                    <!--<p>@tup._2-->
+                    <p><a href="https://www.facebook.com/@tup._1">@tup._2</a>
+                       <img src='https://graph.facebook.com/@tup._1/picture'/></p>
+                       
+                        
+                </div>
+                }
+           
+            </div>
+  
+        
+        <div class="col-md-6">
+
+          
+            <form action="@routes.Application.index()" method="post">
+            
+           <div class="form-group">
+                <button type="submit" class="btn btn-primary pull-right">back to main page</button>
+                </div>
+            </form>
+
+       </div>
+    </div>
+        
+    </div>
+
+    }
+
+

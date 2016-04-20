@@ -1,0 +1,36 @@
+
+@(message: String)
+
+@main("no result"){
+
+<!-- Latest compiled and minified CSS -->
+
+<div class="row">
+
+   
+        <div class="panel panel-success">
+        
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="pull-center" >
+                @message
+                        
+                </div>
+        </div>        
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <form action="@routes.Application.index()" method="post">
+            
+           
+                <button type="submit" class="btn btn-primary pull-right">back to main page</button>
+            </form>
+            </div>
+       </div>
+        
+        </div>
+    </div>
+
+    }
+
+

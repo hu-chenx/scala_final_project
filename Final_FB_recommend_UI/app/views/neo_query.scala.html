@@ -1,0 +1,32 @@
+<html>
+<head><title>head</title>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="graph_logic.js"></script>
+<script type="text/javascript">
+var post_data = {"statements":[{"statement":"START n=node(*) MATCG (n)-[r]->(m) RETURN n,r,m LIMIT (100)","resultDataContents":["graph"]}]};
+
+var request = $.ajax({
+       type: "GET"
+       accepts: { json: "application/json" },
+       dataType: "json",
+       contentType:"application/json; charset=utf-8",
+       url: "http://localhost:9000"
+       data: JSON.stringify(post_data),
+       success: function(data, textStatus, jqXHR){
+        document.write("test")
+       draw_forced_directory(data);
+       },
+       failure: function(msg){
+         document.write("fail")
+       console.log("failed")
+       }
+       });
+</script>
+</head>
+<body>
+graph
+<div id="graph"></div>
+</body>
+</html>
+
