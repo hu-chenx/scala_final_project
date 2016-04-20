@@ -10,6 +10,10 @@ To run this application:
 
 
 Four main functions have been implemented for this web application:
+
+
+
+
 1.loading data(fetch whole time line posts of each user and store single user's posts as a text file,
                as format of posts has been resolved during the fetching procedure, so when tokenizing 
                documents, we simply use non-literate symbol and remove some stop words and numbers)
@@ -24,4 +28,10 @@ Four main functions have been implemented for this web application:
 
 
 Final_Project_Merge folder is draft code, it contains all  implementation and test cases.
+
+
+
+
+
+
 
